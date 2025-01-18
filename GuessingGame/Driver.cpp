@@ -18,7 +18,7 @@ void menu() {
     int userChoice;
     int bagSize;
     int bagUpperBound;
-    int* userGuesses; //create pointer to later store
+    int* userGuesses; //create pointer to later store guess array
     char guessError[100];
 
     //prompt user then get the bag size and upper bound from user
@@ -38,7 +38,6 @@ void menu() {
             userGuesses[count] = numberVerification(1, bagUpperBound, guessError);
         }
 
-        int correctGuesses = 0;
         for (int count = 0; count < bagSize; count++) {
            if (bag.contains(userGuesses[count]))
                correctGuesses++ 

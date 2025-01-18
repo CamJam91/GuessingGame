@@ -1,22 +1,23 @@
 #ifndef BAG_H
 #define BAG_H
+#include<Vector>
+using namespace std;
 template <typename T>
 class Bag {
 private:
-	T contents[];
-
+	vector<T> contents;
 public:
 		//getters
-	int getCurrentSize();
-	int getFrequencyOf(T);
-	bool isEmpty();
-	bool isFull();
-	bool contains(T);
+	virtual int getCurrentSize();
+	virtual int getFrequencyOf(T);
+	virtual bool isEmpty();
+	virtual bool contains(T);
+	virtual vector<T> toVector();
 
 		//setters
-	bool add(T);
-	bool remove(T);
-	void clear();
+	virtual bool add(T);
+	virtual bool remove(T);
+	virtual void clear();
 };
 
 #endif

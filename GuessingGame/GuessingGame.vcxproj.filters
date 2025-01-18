@@ -21,6 +21,9 @@
     <ClInclude Include="Bag.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="GuessingBag.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="UserVerification.cpp">
@@ -30,6 +33,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Bag.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GuessingBag.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
