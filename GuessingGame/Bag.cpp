@@ -11,7 +11,7 @@ template <typename T>
 int Bag<T>::getFrequencyOf(T target) {
 	int frequency = 0;
 	for (T t: contents) {
-		if (t == target) { frequency++ };
+		if (t == target) { frequency++; }
 	}
 	return frequency;
 }
@@ -23,7 +23,7 @@ bool Bag<T>::isEmpty() {
 }
 
 
-//If any occurence of t exists, returnm true
+//If any occurence of t exists, return true
 template <typename T>
 bool Bag<T>::contains(T target) {
 	for (T t : contents) {
@@ -47,7 +47,7 @@ template <typename T>
 bool Bag<T>::remove(T target) {
 	for (int count = 0; count < contents.size(); count++) {
 		if (contents[count] == target) {
-			contents.erase(count);
+			contents.erase(contents.begin() + count);
 			return true;
 		}
 	}

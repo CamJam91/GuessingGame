@@ -22,12 +22,14 @@
     <ClInclude Include="Bag.h" />
     <ClInclude Include="GuessingBag.h" />
     <ClInclude Include="UserVerification.h" />
+    <ClInclude Include="Utilities.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Bag.cpp" />
     <ClCompile Include="Driver.cpp" />
     <ClCompile Include="GuessingBag.cpp" />
     <ClCompile Include="UserVerification.cpp" />
+    <ClCompile Include="Utilities.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

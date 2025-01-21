@@ -4,7 +4,7 @@
 using namespace std;
 template <typename T>
 class Bag {
-private:
+protected:
 	vector<T> contents;
 public:
 		//getters
