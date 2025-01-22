@@ -1,26 +1,23 @@
-/* Cameron Murphy
-CIS2207 N02
-1 / 15 / 2025
-Generic Guessing bag that inherits the bag calss */
-#ifndef GUESSINGBAG_H
-#define GUESSINGBAG_H
-#include "Bag.cpp"
+#pragma once
+#include "BagInterface.h"
+#include "vector"
 using namespace std;
 
-template <typename T>
-class GuessingBag : public Bag<T> {
+class GuessingBag : BagInterface<int> {
 private:
-	int bagSize;
-	int upperBound;
+	vector<int> contents;
 
 public:
 		//getters
-	bool isFull();
-	int correctGuesses(T*);
-		//setters
-	bool add(T) override;
-	void setSize(int);
-	void setUpperBound(int);
+	int getCurrentSize() const;
+	bool isEmpty() const;
+	int getFrequencyOf(const int& item) const;
+	bool contains(const int& item) const;
 
+		//setters
+	bool add(const int& item);
+	bool remove(const int& item);
+	void clear();
+
+	vector<int> toVector() const;
 };
-#endif
