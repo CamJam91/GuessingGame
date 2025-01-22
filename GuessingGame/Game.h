@@ -1,17 +1,19 @@
 #pragma once
 #include <vector>
+#include "GuessingBag.h"
 using namespace std;
 
 class Game
 {
 private:
-	int bagSize;
-	int upperBound;
-	const int lowerBound = 1;
+	int bagSize = 0;
+	int upperBound = 0;
+	const int LOWER_BOUND = 1;
+	GuessingBag guessingBag;
 
 public:
 	Game(int bagSize, int upperBound);
-	bool winner();
 	int correctGuesses(vector<int> guesses);
 };
+
 
