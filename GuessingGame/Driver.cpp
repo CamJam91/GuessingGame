@@ -39,4 +39,3 @@ void promptUser(int& bagSize, int& bagUpperBound) {
 
 void play(Game) {
 
-}
