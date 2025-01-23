@@ -7,7 +7,7 @@ Game::Game(int bagSize, int upperBound)
 	this->upperBound = upperBound;
 }
 
-bool Game::fillBag(GuessingBag guessingBag)
+bool Game::fillBag()
 {	
 	bool success = false;
 	if (bagSize == 0 || upperBound == 0) { return success; }
