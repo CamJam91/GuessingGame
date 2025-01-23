@@ -18,6 +18,8 @@ public:
 
 		//getters
 	int correctGuesses(vector<int> guesses);
+	int getBagSize() const;
+	int getUpperBound() const;
 
 		//setters
 	bool fillBag();
