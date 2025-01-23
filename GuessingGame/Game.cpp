@@ -1,4 +1,5 @@
 #include "Game.h"
+#include "GuessingBag.h"
 
 Game::Game(int bagSize, int upperBound)
 {
@@ -6,7 +7,7 @@ Game::Game(int bagSize, int upperBound)
 	this->upperBound = upperBound;
 }
 
-bool Game::fillBag()
+bool Game::fillBag(GuessingBag guessingBag)
 {	
 	bool success = false;
 	if (bagSize == 0 || upperBound == 0) { return success; }

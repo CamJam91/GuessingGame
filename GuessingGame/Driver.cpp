@@ -21,7 +21,7 @@ int main() {
 	do {
 		promptUser(bagSize, bagUpperBound);
 		game = new Game(bagSize, bagUpperBound);
-		if (!game->fillBag()) {
+		if (!game->fillBag(game)) {
 			printf("There was a problem creating your bag...exiting\n");
 			return 1;
 		}

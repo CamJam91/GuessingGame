@@ -10,10 +10,13 @@ private:
 	int bagSize;
 	int upperBound;
 	const int lowerBound = 1;
+	GuessingBag guessingBag;
 
 public:
+		//constructor
 	Game(int bagSize, int upperBound);
-	bool winner();
+
+		//getters
 	int correctGuesses(vector<int> guesses);
 
 		//setters
