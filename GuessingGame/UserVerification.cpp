@@ -4,14 +4,18 @@ CIS2207 N02
 A file for verifying user input. Takes a lower bound, upper bound and error message*/
 #include "UserVerification.h"
 #include <string>
+#include <sstream>
 using namespace std;
 
 int numberVerification(int lowerBound, int upperBound, string errorMessage) {
     int userNumber;
-    cin >> userNumber;
+    string userString;
+    getline(cin, userString);
+    stringstream(userString) >> userNumber;
     while (userNumber < lowerBound || userNumber > upperBound) {
         cout << errorMessage; //number is not in range
-        cin >> userNumber;
+        getline(cin, userString);
+        stringstream(userString) >> userNumber;
     }
 
     return userNumber;

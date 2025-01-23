@@ -5,6 +5,6 @@
 using namespace std;
 
 
-vector<int> getRandoms(int, int, int);
+vector<int> getRandoms(int size, int lowerBound, int upperBound);
 
 #endif
