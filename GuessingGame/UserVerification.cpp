@@ -45,6 +45,27 @@ string stringVerification(string* allowedStrings, int size, string) {
     return userString;
 }
 
+bool binaryChoice(string errorMessage) {
+    string allowableStrings[] = {"Y", "y", "Yes", "yes", "N", "n", "No", "no"};
+    string positives[] = { "Y", "y", "Yes", "yes"};
+    string* allowableptr = allowableStrings;
+    string* positiveptr = positives;
+    bool allowed = false;
+    string userString;
+
+    getline(cin, userString);
+    while (!allowed) {
+        printf("%s",errorMessage);
+        getline(cin, userString);
+        if (containsString(userString, allowableptr, 8)) {
+            allowed = true;
+        }
+    }
+
+    return containsString(userString, positiveptr, 4);
+
+}
+
     //takes a base string and looks for it in a list of strings, returns true is the string was found
 bool containsString(string baseString, string* compareStrings, int size) {
     for (int count = 0; count < size; count++) {

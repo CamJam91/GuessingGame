@@ -20,7 +20,6 @@ int main() {
 	int bagUpperBound;
 	int correctGuesses;
 	string userString;
-	string allowableStrings[] = { "Y", "y", "Yes", "yes", "N", "n", "No", "no" };
 
 	printf("Welcome to the Guessing Bag game\n");
 	do {

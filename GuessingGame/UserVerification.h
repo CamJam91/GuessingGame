@@ -10,6 +10,8 @@ char charVerification(char[], int, string);
 
 string stringVerification(string*, int, string);
 
+bool binaryChoice(string errorMessage);
+
 bool containsString(string, string*, int);
 
 
