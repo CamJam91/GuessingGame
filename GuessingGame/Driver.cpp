@@ -12,14 +12,17 @@ Program Driver*/
 using namespace std;
 
 void promptUser(int&, int&);
-void play(Game);
+int play(Game);
 
 int main() {
 	Game* game;
 	int bagSize;
 	int bagUpperBound;
+	int correctGuesses;
+	string userString;
+	string allowableStrings[] = { "Y", "y", "Yes", "yes", "N", "n", "No", "no" };
+
 	printf("Welcome to the Guessing Bag game\n");
-	
 	do {
 		promptUser(bagSize, bagUpperBound);
 		game = new Game(bagSize, bagUpperBound);
@@ -28,8 +31,18 @@ int main() {
 			return 1;
 		}
 
-		play(*game);
-	} while (true);
+			//check if winner
+		do {
+			correctGuesses = play(*game);
+			if (correctGuesses == bagSize) {
+				printf("Congratulations, you win! PLay again?");
+
+			}
+			else {
+				printf("You got %d out of %d correct, try again\n>>", correctGuesses, bagSize);
+			}
+		} while (correctGuesses != bagSize);
+	} while ();
 	return 0;
 }
 
@@ -41,19 +54,24 @@ void promptUser(int& bagSize, int& bagUpperBound) {
 	bagUpperBound = numberVerification(2, 1000, "Please choose a number between 2 and 1000\n>>");
 }
 
-void play(Game game) {
+int play(Game game) {
 	vector<int> userGuesses;
 	int userNumber;
+	int correctGuesses = 0;
 	ostringstream ostringstream;
 	ostringstream << "Please enter a number from 1 to " << game.getUpperBound() << "\n>>";;
 	string errorMessage = ostringstream.str();
 
 
+		//fill user guesses
 	printf("Choose %d numbers from 1 - %d\n>>", game.getBagSize(), game.getUpperBound());
 	for (int count = 0; count < game.getBagSize(); count++) {
 		userNumber = numberVerification(1, game.getUpperBound(), errorMessage);
+		userGuesses.push_back(userNumber);
 		printf(">>");
 	}
 
+		//return guess compare
+	return game.correctGuesses(userGuesses);
 }
 

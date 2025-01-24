@@ -18,13 +18,22 @@ int Game::getUpperBound() const {
 	return upperBound;
 }
 
+	//Vector is copies since it needs to be mutated for function to give proper results
 int Game::correctGuesses(vector<int> guesses)
 {
+	int correctGuesses = 0;
 	vector<int> compares = guessingBag.toVector();
-	for (int count = 0; count < bagSize; count++) {
 
+	for (int guessCount = 0; guessCount < bagSize; guessCount++) {
+		bool found = false;
+		for (int count = 0; count < bagSize || !found; count++) {
+			if (guesses[guessCount] == compares[count]) {
+				correctGuesses++;
+				compares.erase(compares.begin() + count); //delete correct guess
+			}
+		}
 	}
-	return 0;
+	return correctGuesses;
 }
 
 bool Game::fillBag()
