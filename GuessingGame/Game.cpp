@@ -22,14 +22,16 @@ int Game::getUpperBound() const {
 int Game::correctGuesses(vector<int> guesses)
 {
 	int correctGuesses = 0;
-	vector<int> compares = guessingBag.toVector();
+	vector<int> compares;
+	compares = guessingBag.toVector();
 
-	for (int guessCount = 0; guessCount < bagSize; guessCount++) {
+	for (int guessCount = 0; guessCount < guesses.size(); guessCount++) {
 		bool found = false;
-		for (int count = 0; count < bagSize || !found; count++) {
+		for (int count = 0; count < compares.size() && !found; count++) {
 			if (guesses[guessCount] == compares[count]) {
 				correctGuesses++;
 				compares.erase(compares.begin() + count); //delete correct guess
+				found = true;
 			}
 		}
 	}

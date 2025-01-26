@@ -19,7 +19,7 @@ int main() {
 	int bagSize;
 	int bagUpperBound;
 	int correctGuesses;
-	string userString;
+	bool userChoice;
 
 	printf("Welcome to the Guessing Bag game\n");
 	do {
@@ -34,14 +34,14 @@ int main() {
 		do {
 			correctGuesses = play(*game);
 			if (correctGuesses == bagSize) {
-				printf("Congratulations, you win! PLay again?");
-
+				printf("Congratulations, you win! PLay again?\n>>");
+				userChoice = binaryChoice("Play again?\n>>");
 			}
 			else {
 				printf("You got %d out of %d correct, try again\n>>", correctGuesses, bagSize);
 			}
 		} while (correctGuesses != bagSize);
-	} while ();
+	} while (userChoice);
 	return 0;
 }
 

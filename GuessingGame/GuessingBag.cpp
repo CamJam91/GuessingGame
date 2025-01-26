@@ -52,5 +52,5 @@ void GuessingBag::clear(){
 
 vector<int> GuessingBag::toVector() const
 {
-	return vector<int>();
+	return contents;
 }

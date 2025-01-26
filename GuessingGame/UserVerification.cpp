@@ -53,15 +53,19 @@ bool binaryChoice(string errorMessage) {
     bool allowed = false;
     string userString;
 
+    cin.clear();
     getline(cin, userString);
+    if (containsString(userString, allowableptr, 8)) {
+        allowed = true;
+    }
     while (!allowed) {
+        cin.clear();
         printf("%s",errorMessage);
         getline(cin, userString);
         if (containsString(userString, allowableptr, 8)) {
             allowed = true;
         }
     }
-
     return containsString(userString, positiveptr, 4);
 
 }
@@ -73,5 +77,5 @@ bool containsString(string baseString, string* compareStrings, int size) {
             return true; //base string was found
         }
     }
-    return true;
+    return false;
 }
