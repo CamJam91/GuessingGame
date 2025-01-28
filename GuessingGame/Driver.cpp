@@ -11,28 +11,35 @@ Program Driver*/
 #include "Game.h"
 using namespace std;
 
-void promptUser(int&, int&);
+static void promptUser(int&, int&);
+static bool getGuesses(Game*);
 int play(Game);
 
 int main() {
 	Game* game;
 	int bagSize;
 	int bagUpperBound;
-	int correctGuesses;
+	int correctGuesses = 0;
 	bool userChoice;
 
 	printf("Welcome to the Guessing Bag game\n");
 	do {
+			//prompt user for bagsize and bound, construct game and make sure there was not an issue
 		promptUser(bagSize, bagUpperBound);
 		game = new Game(bagSize, bagUpperBound);
-		if (!game->fillBag()) {
+		if (game->getBagSize() == 0) {
 			printf("There was a problem creating your bag...exiting\n");
 			return 1;
 		}
 
 			//check if winner
 		do {
-			correctGuesses = play(*game);
+			bool succeeded = getGuesses(game);
+			if (!succeeded) {
+				printf("There was a problem while getting guesses...exiting");
+				return 1;
+			}
+			correctGuesses = game->getCorrectGuesses();
 			if (correctGuesses == bagSize) {
 				printf("Congratulations, you win! PLay again?\n>>");
 				userChoice = binaryChoice("Play again?\n>>");
@@ -44,8 +51,8 @@ int main() {
 	} while (userChoice);
 	return 0;
 }
-
-void promptUser(int& bagSize, int& bagUpperBound) {
+	//Fix: use the new user verification methods
+static void promptUser(int& bagSize, int& bagUpperBound) {
 	printf(" Choose the size of your Guessing bag.\n>>");
 	bagSize = numberVerification(1, 100, "Please choose a number between 1 and 100\n>>");
 	
@@ -53,24 +60,22 @@ void promptUser(int& bagSize, int& bagUpperBound) {
 	bagUpperBound = numberVerification(2, 1000, "Please choose a number between 2 and 1000\n>>");
 }
 
-int play(Game game) {
-	vector<int> userGuesses;
-	int userNumber;
-	int correctGuesses = 0;
+	//prompt user and get guesses
+static bool getGuesses(Game* game) {
+	int guess;
+	bool succeeded = true;
 	ostringstream ostringstream;
-	ostringstream << "Please enter a number from 1 to " << game.getUpperBound() << "\n>>";;
+	ostringstream << "Please enter a number from 1 to " << game->getUpperBound() << "\n>>";
 	string errorMessage = ostringstream.str();
 
-
-		//fill user guesses
-	printf("Choose %d numbers from 1 - %d\n>>", game.getBagSize(), game.getUpperBound());
-	for (int count = 0; count < game.getBagSize(); count++) {
-		userNumber = numberVerification(1, game.getUpperBound(), errorMessage);
-		userGuesses.push_back(userNumber);
-		printf(">>");
+	printf("Choose %d numbers from 1 - %d\n>>", game->getBagSize(), game->getUpperBound());
+	for (int count = 0; count < game->getBagSize(); count++) {
+		guess = numberVerification(1, game->getUpperBound(), errorMessage);
+		succeeded = game->addGuess(guess); //add guess to our game
+		if (!succeeded) {
+			return succeeded;
+		}
 	}
-
-		//return guess compare
-	return game.correctGuesses(userGuesses);
+	return succeeded;
 }
 

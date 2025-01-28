@@ -7,6 +7,7 @@ A file for verifying user input. Takes a lower bound, upper bound and error mess
 #include <sstream>
 using namespace std;
 
+    //Fix: cin and cout should exist in main, have this function return a bool or int to represent success
 int numberVerification(int lowerBound, int upperBound, string errorMessage) {
     int userNumber;
     string userString;
@@ -21,6 +22,7 @@ int numberVerification(int lowerBound, int upperBound, string errorMessage) {
     return userNumber;
 }
 
+    //Fix: cin and cout should exist in main, have this function return a bool or int to represent success
 char charVerification(char allowedCharacters[], int size, string errorMessage) {
     char userChar;
     bool allowed = false;
@@ -33,6 +35,7 @@ char charVerification(char allowedCharacters[], int size, string errorMessage) {
     return userChar;
 }
 
+    //Fix: cin and cout should exist in main, have this function return a bool or int to represent success
 string stringVerification(string* allowedStrings, int size, string) {
     string userString;
     bool allowed = false;
@@ -45,6 +48,7 @@ string stringVerification(string* allowedStrings, int size, string) {
     return userString;
 }
 
+    //Fix: cin and cout should exist in main, have this function return a bool or int to represent success
 bool binaryChoice(string errorMessage) {
     string allowableStrings[] = {"Y", "y", "Yes", "yes", "N", "n", "No", "no"};
     string positives[] = { "Y", "y", "Yes", "yes"};

@@ -6,6 +6,7 @@ Game::Game(int bagSize, int upperBound)
 {
 	this->bagSize = bagSize;
 	this->upperBound = upperBound;
+	fillBag();
 }
 
 
@@ -19,33 +20,40 @@ int Game::getUpperBound() const {
 }
 
 	//Vector is copies since it needs to be mutated for function to give proper results
-int Game::correctGuesses(vector<int> guesses)
-{
+int Game::getCorrectGuesses(){
 	int correctGuesses = 0;
 	vector<int> compares;
 	compares = guessingBag.toVector();
 
-	for (int guessCount = 0; guessCount < guesses.size(); guessCount++) {
+	for (int guessCount = 0; guessCount < bagSize; guessCount++) {
 		bool found = false;
 		for (int count = 0; count < compares.size() && !found; count++) {
-			if (guesses[guessCount] == compares[count]) {
+			if (userGuesses[guessCount] == compares[count]) {
 				correctGuesses++;
-				compares.erase(compares.begin() + count); //delete correct guess
+				compares.erase(compares.begin() + count); //delete correct guess from the bag vector copy
 				found = true;
 			}
 		}
 	}
+	userGuesses.clear(); //clear the userguesses vector so it can be filled again
 	return correctGuesses;
 }
 
-bool Game::fillBag()
-{	
-	bool success = false;
-	if (bagSize == 0 || upperBound == 0) { return success; }
+	//setters
+void Game::fillBag(){	
+	if (bagSize != 0 && upperBound != 0) { 
 	vector<int> randoms = getRandoms(bagSize, 1, upperBound);
-	for (int count = 0; count < bagSize; count++) { //fill ther bag with the elements of our vector
-		success = guessingBag.add(randoms.at(count));
+		for (int count = 0; count < bagSize; count++) { //fill the bag with the elements of our vector
+			guessingBag.add(randoms.at(count));
+		}
 	}
-	return success;
+}
+
+bool Game::addGuess(const int guess) {
+	if (guess > upperBound || userGuesses.size() == bagSize) {
+		return false;
+	}
+	userGuesses.push_back(guess);
+	return true;
 }
 

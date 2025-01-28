@@ -11,18 +11,20 @@ private:
 	int upperBound;
 	const int lowerBound = 1;
 	GuessingBag guessingBag;
+	vector<int> userGuesses;
 
 public:
 		//constructor
 	Game(int bagSize, int upperBound);
 
 		//getters
-	int correctGuesses(vector<int> guesses);
+	int getCorrectGuesses();
 	int getBagSize() const;
 	int getUpperBound() const;
 
 		//setters
-	bool fillBag();
+	void fillBag();
+	bool addGuess(const int guess);
 
 };
 
